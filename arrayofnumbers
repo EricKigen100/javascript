@@ -1,0 +1,47 @@
+//Given an array of numbers, return an array where each element is the product of all the elements in the original array except the current element.
+
+function productExceptSelf(nums) {
+  const product = nums.reduce((acc, num) => acc * num, 1);
+  return nums.map((num) => product / num);
+}
+
+//Here's an example of how you can use this function:
+
+const inputArray = [1, 2, 3, 4];
+const result = productExceptSelf(inputArray);
+console.log(result);
+
+//output [24, 12, 8, 6]
+
+//productExpectSelft- takes an array of numbers('nums)as input and returns an array where each element is the product of all elemnets in the original array except the current element
+
+//nums.reduce((acc, num) => acc * num, 1): This line uses the reduce() method to multiply all elements in the nums array together, starting with an initial value of 1. This calculates the total product of all elements in the array.
+
+//return nums.map((num) => product / num): The function then uses map() on the nums array. For each element num in the array, it divides the total product (product) by the current element (num) and returns the resulting value. This step aims to calculate the product of all elements except the current element by dividing the total product by each individual element.
+
+
+//using for loop
+
+function getProductArray(arr) {//This declares a function named getProductArray that takes an array arr as its parameter.
+  const productArray = [];   //-- This initializes an empty array named productArray where the calculated products will be stored.
+
+  for (let i = 0; i < arr.length; i++) { //This initiates a for loop that iterates through each element of the input array arr.
+    let product = 1;  //Inside the outer loop, a variable product is initialized to 1. This variable will store the product of all elements except the current element.
+
+    for (let j = 0; j < arr.length; j++) {  //Within the outer loop, an inner for loop is used to calculate the product excluding the element at index i.
+      if (j !== i) {  //This condition checks if the current inner loop index j is not equal to the outer loop index i. If it's not equal, it multiplies the product variable by the value of arr[j].
+        product *= arr[j];  
+      }
+    }
+
+    productArray.push(product);  ////After the inner loop completes for a specific element, the calculated product (product of all elements except the current one) is pushed into the productArray.
+  }
+
+  return productArray;  //Once all elements have been processed, the function returns the productArray containing products of all elements except the current element.
+}
+
+// Example usage:
+const inputArray2 = [1, 2, 3, 4];
+const resultArray = getProductArray(inputArray2);
+console.log(resultArray); // Output will be [24, 12, 8, 6]
+//This function, `getProductArray`, takes an input array `arr`, initializes an empty `productArray`, and then uses two nested loops to calculate the product of all elements except the current element at index `i`. The product for each element is pushed into `productArray`, which is then returned at the end.
